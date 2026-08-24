@@ -12,22 +12,22 @@ public class Demo {
         System.out.println(" ⚖️ FastAIMatcher — SOX & Compliance Audit Engine");
         System.out.println("=================================================");
 
-        // 1. Define Standard Compliance & Policy Rules (e.g. from BHO or SOX Policy)
+        // 1. Define Standard Compliance & Policy Rules (e.g. from Enterprise Security or Change Policy)
         List<Rule> rules = List.of(
-                new Rule("SOX-BHO-01", Rule.Category.MANDATORY, "Economic interest must be documented", List.of("wirtschaftliches interesse"), Double.NaN),
-                new Rule("SOX-FIN-02", Rule.Category.NUMERIC_LIMIT, "Capital expense limit max 100,000 EUR", List.of(), 100_000.0),
-                new Rule("SOX-SEC-03", Rule.Category.APPROVAL, "Dual approval (4-eyes principle) mandatory", List.of(), Double.NaN)
+                new Rule("SEC-POL-01", Rule.Category.MANDATORY, "Security assessment must be documented", List.of("security assessment"), Double.NaN),
+                new Rule("FIN-POL-02", Rule.Category.NUMERIC_LIMIT, "Capital expense limit max 100,000 EUR", List.of(), 100_000.0),
+                new Rule("CHG-POL-03", Rule.Category.APPROVAL, "Dual approval (4-eyes principle) mandatory", List.of(), Double.NaN)
         );
 
         FastAIMatcher matcher = new FastAIMatcher(rules);
         System.out.println("Loaded " + rules.size() + " active compliance rules.");
 
-        // 2. Validate Compliant Target Document (e.g. Change-Ticket / Antrag)
+        // 2. Validate Compliant Target Document (e.g. Change-Ticket / RFC)
         System.out.println("\n--- 1. Evaluating Compliant Document ---");
         TargetDocument validDoc = new TargetDocument(
                 "TICKET-8821",
                 "Core Database Upgrade",
-                "Projektantrag zur Migration: Das wirtschaftliches interesse des Unternehmens ist belegt.",
+                "Change request for database upgrade: The security assessment has been fully conducted.",
                 Map.of("budget", "65000", "target_env", "prod"),
                 List.of("Release Manager", "VP Engineering")
         );

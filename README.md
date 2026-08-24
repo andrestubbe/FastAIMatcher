@@ -10,7 +10,7 @@
 
 **⚡ High-speed automated SOX compliance document-to-rule verification, hybrid semantic matching, and `.matchbin` audit reporting engine for Java.**
 
-**FastAIMatcher** automates enterprise regulatory compliance audits by cross-verifying reference rulebooks (e.g. **BHO.pdf**, SOX policies, HR authorization matrices) against target operational artifacts (**Change-Tickets**, **Deployment Logs**, **Project Applications**, **Access Grants**) in microseconds without expensive manual inspection.
+**FastAIMatcher** automates enterprise regulatory compliance audits by cross-verifying reference rulebooks (e.g. ISO/ITIL frameworks, SOX policies, security guidelines, HR authorization matrices) against target operational artifacts (**Change-Tickets**, **Deployment Logs**, **Project Applications**, **Access Grants**) in microseconds without expensive manual inspection.
 
 ---
 
@@ -25,18 +25,18 @@ public class Demo {
     public static void main(String[] args) {
         // 1. Define compliance & policy rules
         List<Rule> rules = List.of(
-                new Rule("SOX-BHO-01", Rule.Category.MANDATORY, "Economic interest must be documented", List.of("wirtschaftliches interesse"), Double.NaN),
-                new Rule("SOX-FIN-02", Rule.Category.NUMERIC_LIMIT, "Capital expense limit max 100,000 EUR", List.of(), 100_000.0),
-                new Rule("SOX-SEC-03", Rule.Category.APPROVAL, "Dual approval (4-eyes principle) mandatory", List.of(), Double.NaN)
+                new Rule("SEC-POL-01", Rule.Category.MANDATORY, "Security justification must be documented", List.of("security assessment"), Double.NaN),
+                new Rule("FIN-POL-02", Rule.Category.NUMERIC_LIMIT, "Capital expense limit max 100,000 EUR", List.of(), 100_000.0),
+                new Rule("CHG-POL-03", Rule.Category.APPROVAL, "Dual approval (4-eyes principle) mandatory", List.of(), Double.NaN)
         );
 
         FastAIMatcher matcher = new FastAIMatcher(rules);
 
-        // 2. Validate operational target document (e.g. Jira Ticket or Antrag)
+        // 2. Validate operational target document (e.g. Jira Ticket or Change Request)
         TargetDocument doc = new TargetDocument(
                 "TICKET-8821",
                 "Database Migration",
-                "Projektantrag: Das wirtschaftliches interesse ist belegt.",
+                "Change request: The security assessment has been fully conducted.",
                 Map.of("budget", "65000"),
                 List.of("Release Manager", "Lead Architect")
         );
@@ -68,7 +68,7 @@ public class Demo {
 ## Real-World Scenarios
 
 - **🏢 Enterprise SOX Auditing** — Validating that production software deployments exactly match authorized change tickets.
-- **📑 BHO & Public Grant Verification** — Checking government grant funding applications against federal budget requirements (BHO.pdf).
+- **📑 Policy & Grant Proposal Verification** — Checking budget requests and technical proposals against enterprise policy constraints.
 - **👥 HR Matrix vs. Active Directory** — Detecting rogue admin privileges and segregation-of-duties (SoD) violations.
 - **🔒 Automated Pre-Deployment Gatekeeper** — Blocking CI/CD pipeline deployments if compliance rules are violated.
 
