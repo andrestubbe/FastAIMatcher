@@ -1,4 +1,4 @@
-# FastAIMatcher 0.1.1 [ALPHA] â€” Automated SOX Compliance & Hybrid Rule Matching Engine
+# FastAIMatcher 0.1.1 [ALPHA] — Automated SOX Compliance & Hybrid Rule Matching Engine
 
 [![Status](https://img.shields.io/badge/status-0.1.1-brightgreen.svg)](https://github.com/andrestubbe/FastAIMatcher/releases/tag/0.1.1)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -8,7 +8,7 @@
 
 ---
 
-**âš¡ High-speed automated SOX compliance document-to-rule verification, hybrid semantic matching, and `.matchbin` audit reporting engine for Java.**
+**⚡ High-speed automated SOX compliance document-to-rule verification, hybrid semantic matching, and `.matchbin` audit reporting engine for Java.**
 
 **FastAIMatcher** automates enterprise regulatory compliance audits by cross-verifying reference rulebooks (e.g. ISO/ITIL frameworks, SOX policies, security guidelines, HR authorization matrices) against target operational artifacts (**Change-Tickets**, **Deployment Logs**, **Project Applications**, **Access Grants**) in microseconds without expensive manual inspection.
 
@@ -57,20 +57,20 @@ public class Demo {
 
 ## Key Features
 
-- **âš–ï¸ Automated SOX & Compliance Audits** â€” Cross-matches regulatory policies (Soll) directly against operational reality (Ist).
-- **ðŸ§© 3-Layer Hybrid Matching** â€” Combines symbolic logic (numeric limits, mandatory approvals) with keyword and semantic embedding verification.
-- **ðŸ” Discrepancy & Violation Detection** â€” Automatically flags missing evidence, unapproved changes, and unauthorized privilege escalation.
-- **ðŸ“¦ FastFileFormat `.matchbin` Compression** â€” Tamper-evident, high-density binary audit trace streaming (Payload ID `0x0007`).
-- **ðŸ›¡ï¸ 100% Air-Gapped & In-Process** â€” Zero cloud dependencies, zero external database roundtrips, sub-millisecond execution.
+- **⚖️ Automated SOX & Compliance Audits** — Cross-matches regulatory policies (Soll) directly against operational reality (Ist).
+- **🧩 3-Layer Hybrid Matching** — Combines symbolic logic (numeric limits, mandatory approvals) with keyword and semantic embedding verification.
+- **🔍 Discrepancy & Violation Detection** — Automatically flags missing evidence, unapproved changes, and unauthorized privilege escalation.
+- **📦 FastFileFormat `.matchbin` Compression** — Tamper-evident, high-density binary audit trace streaming (Payload ID `0x0007`).
+- **🛡️ 100% Air-Gapped & In-Process** — Zero cloud dependencies, zero external database roundtrips, sub-millisecond execution.
 
 ---
 
 ## Real-World Scenarios
 
-- **ðŸ¢ Enterprise SOX Auditing** â€” Validating that production software deployments exactly match authorized change tickets.
-- **ðŸ“‘ Policy & Grant Proposal Verification** â€” Checking budget requests and technical proposals against enterprise policy constraints.
-- **ðŸ‘¥ HR Matrix vs. Active Directory** â€” Detecting rogue admin privileges and segregation-of-duties (SoD) violations.
-- **ðŸ”’ Automated Pre-Deployment Gatekeeper** â€” Blocking CI/CD pipeline deployments if compliance rules are violated.
+- **🏢 Enterprise SOX Auditing** — Validating that production software deployments exactly match authorized change tickets.
+- **📑 Policy & Grant Proposal Verification** — Checking budget requests and technical proposals against enterprise policy constraints.
+- **👥 HR Matrix vs. Active Directory** — Detecting rogue admin privileges and segregation-of-duties (SoD) violations.
+- **🔒 Automated Pre-Deployment Gatekeeper** — Blocking CI/CD pipeline deployments if compliance rules are violated.
 
 ---
 
@@ -165,10 +165,10 @@ dependencies {
 
 Download the latest JARs directly to add them to your classpath:
 
-1. âš–ï¸ **[FastAIMatcher-0.1.0.jar](https://github.com/andrestubbe/FastAIMatcher/releases/download/0.1.0/FastAIMatcher-0.1.0.jar)** (SOX Compliance & Hybrid Matcher)
-2. ðŸ“„ **[FastFileFormat-0.1.0.jar](https://github.com/andrestubbe/FastFileFormat/releases/download/0.1.0/FastFileFormat-0.1.0.jar)** (Dual Binary & Text File Format)
-3. âš¡ **[FastBinary-0.1.0.jar](https://github.com/andrestubbe/FastBinary/releases/download/0.1.0/FastBinary-0.1.0.jar)** (VarInt & Binary Packing)
-4. âš™ï¸ **[fastcore-0.1.0.jar](https://github.com/andrestubbe/FastCore/releases/download/0.1.0/fastcore-0.1.0.jar)** (Foundation Library)
+1. ⚖️ **[FastAIMatcher-0.1.0.jar](https://github.com/andrestubbe/FastAIMatcher/releases/download/0.1.0/FastAIMatcher-0.1.0.jar)** (SOX Compliance & Hybrid Matcher)
+2. 📄 **[FastFileFormat-0.1.0.jar](https://github.com/andrestubbe/FastFileFormat/releases/download/0.1.0/FastFileFormat-0.1.0.jar)** (Dual Binary & Text File Format)
+3. ⚡ **[FastBinary-0.1.0.jar](https://github.com/andrestubbe/FastBinary/releases/download/0.1.0/FastBinary-0.1.0.jar)** (VarInt & Binary Packing)
+4. ⚙️ **[fastcore-0.1.0.jar](https://github.com/andrestubbe/FastCore/releases/download/0.1.0/fastcore-0.1.0.jar)** (Foundation Library)
 
 ---
 
@@ -200,11 +200,11 @@ MIT License. See [LICENSE](LICENSE) file for details.
 
 ## Related Projects
 
-- [FastAIReasoner](https://github.com/andrestubbe/FastAIReasoner) â€” Multi-step reasoning & heuristic rule planning
-- [FastAIHybrid](https://github.com/andrestubbe/FastAIHybrid) â€” Hybrid dense & sparse retrieval fusion
-- [FastContentParse](https://github.com/andrestubbe/FastContentParse) â€” Document section & metadata parsing
-- [FastFileFormat](https://github.com/andrestubbe/FastFileFormat) â€” Universal dual-format binary & text document engine
+- [FastAIReasoner](https://github.com/andrestubbe/FastAIReasoner) — Multi-step reasoning & heuristic rule planning
+- [FastAIHybrid](https://github.com/andrestubbe/FastAIHybrid) — Hybrid dense & sparse retrieval fusion
+- [FastContentParse](https://github.com/andrestubbe/FastContentParse) — Document section & metadata parsing
+- [FastFileFormat](https://github.com/andrestubbe/FastFileFormat) — Universal dual-format binary & text document engine
 
 ---
 
-**Part of the FastJava Ecosystem** â€” *Making the JVM faster. Small package. Maximum speed. Zero bloat. ðŸš€ðŸ“‹*
+**Part of the FastJava Ecosystem** — *Making the JVM faster. Small package. Maximum speed. Zero bloat. 🚀📋*
