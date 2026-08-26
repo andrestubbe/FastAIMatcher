@@ -1,4 +1,4 @@
-﻿# FastAIMatcher 0.1.1 [ALPHA] â€” Automated SOX Compliance & Hybrid Rule Matching Engine
+# FastAIMatcher 0.1.1 [ALPHA] â€” Automated SOX Compliance & Hybrid Rule Matching Engine
 
 [![Status](https://img.shields.io/badge/status-0.1.1-brightgreen.svg)](https://github.com/andrestubbe/FastAIMatcher/releases/tag/0.1.1)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -179,6 +179,16 @@ Download the latest JARs directly to add them to your classpath:
 * **[CHANGELOG.md](docs/CHANGELOG.md)**: Release history and version notes.
 * **[ROADMAP.md](docs/ROADMAP.md)**: Future milestones and planned features.
 * **[COMPILE.md](docs/COMPILE.md)**: Instructions for compiling from source.
+
+---
+
+## Platform Support
+
+| Platform | Status |
+|----------|--------|
+| Windows 10/11 (x64) | ✅ Fully Supported |
+| Linux | 🚧 Planned |
+| macOS | 🚧 Planned |
 
 ---
 
