@@ -1,3 +1,6 @@
+> [!WARNING]
+> **🚧 WIP — Active AI Pipeline Construction & Architecture Optimization in Progress.**
+
 # FastAIMatcher 0.1.2 [ALPHA] — Automated SOX Compliance & Hybrid Rule Matching Engine
 
 [![Status](https://img.shields.io/badge/status-0.1.2-brightgreen.svg)](https://github.com/andrestubbe/FastAIMatcher/releases/tag/0.1.2)
