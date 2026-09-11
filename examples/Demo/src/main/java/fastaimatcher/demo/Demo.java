@@ -27,6 +27,11 @@ public class Demo {
     private static final String RESET    = FastANSI.RESET;
 
     public static void main(String[] args) throws Exception {
+        try {
+            System.setOut(new java.io.PrintStream(System.out, true, StandardCharsets.UTF_8));
+            System.setErr(new java.io.PrintStream(System.err, true, StandardCharsets.UTF_8));
+        } catch (Exception ignored) {}
+
         printHeroHeader();
 
         // 1. SOX & ITGC Compliance Control Catalogue
