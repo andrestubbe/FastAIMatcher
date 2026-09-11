@@ -1,15 +1,17 @@
 @echo off
-setlocal
-cd /d "%~dp0"
-echo ===================================================
-echo  Building FastAIMatcher & Running Live Demo
-echo ===================================================
+chcp 65001 >nul
 
-call "C:\Users\andre\tools\apache-maven-3.9.9\bin\mvn.cmd" compile
-if %ERRORLEVEL% NEQ 0 (
-    echo Build failed!
-    exit /b %ERRORLEVEL%
-)
+set MAVEN_OPTS=--enable-native-access=ALL-UNNAMED
+if exist "C:\Users\andre\tools\apache-maven-3.9.9\bin" set PATH=C:\Users\andre\tools\apache-maven-3.9.9\bin;%PATH%
 
-java -cp "target\classes;examples\Demo\src\main\java;%USERPROFILE%\.m2\repository\com\github\andrestubbe\fastcore\0.1.0\fastcore-0.1.0.jar;%USERPROFILE%\.m2\repository\com\github\andrestubbe\FastBinary\0.1.0\FastBinary-0.1.0.jar;%USERPROFILE%\.m2\repository\com\github\andrestubbe\FastFileFormat\0.1.0\FastFileFormat-0.1.0.jar" fastaimatcher.demo.Demo
+echo ⚡ Building Project...
+call mvn clean install -DskipTests -q
+if %ERRORLEVEL% NEQ 0 ( echo ❌ Benchmark failed. & pause & exit /b %ERRORLEVEL% )
+
+echo 🚀 Running Demo...
+cd examples\Demo
+call mvn compile exec:java -Dexec.mainClass=fastaimatcher.demo.Demo -q
+if %ERRORLEVEL% NEQ 0 ( echo ❌ Benchmark failed. & pause & exit /b %ERRORLEVEL% )
+
+cd ..\..
 pause
