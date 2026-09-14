@@ -49,8 +49,21 @@ public class Demo {
         );
 
         FastAIMatcher matcher = new FastAIMatcher(rules);
-        System.out.printf("  %sLoaded %s%d%s active SOX/ITGC compliance controls into verification pipeline.%s\n\n",
-                C_DIM, C_BOLD_WHITE, rules.size(), C_DIM, RESET);
+        System.out.printf("  %sLoaded %s%d%s active SOX/ITGC compliance controls into verification pipeline:%s\n",
+                C_GRAY, C_BOLD_WHITE, rules.size(), C_GRAY, RESET);
+
+        for (int i = 0; i < rules.size(); i++) {
+            Rule r = rules.get(i);
+            boolean isLast = (i == rules.size() - 1);
+            String branch = isLast ? "└──" : "├──";
+            String idTag = "[" + r.id() + "]";
+            System.out.printf("  %s " + C_WHITE + "%-20s " + C_GRAY + "%-14s " + C_DIM + "%s" + RESET + "\n",
+                    C_BORDER + branch + RESET,
+                    idTag,
+                    r.category().name(),
+                    r.ruleText());
+        }
+        System.out.println();
 
         // 2. Locate and stream Enterprise Import CSV records
         Path csvPath = Paths.get("..", "..", "docs", "list-import-20260731084257.csv");
