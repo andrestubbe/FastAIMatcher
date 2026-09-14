@@ -14,7 +14,7 @@ import java.util.*;
 
 /**
  * Live FastANSI SOX & Compliance Audit Engine Demo.
- * Demonstrates high-throughput verification of real Vodafone interface import batches.
+ * Demonstrates high-throughput verification of enterprise interface import batches.
  */
 public class Demo {
 
@@ -41,7 +41,7 @@ public class Demo {
                         List.of(), Double.NaN),
                 new Rule("ITGC-SYS-AUTHP", Rule.Category.MANDATORY,
                         "System/Automated approval restricted: Automated bypass requires explicit human sign-off",
-                        List.of("vodafone.com"), Double.NaN),
+                        List.of("example.com"), Double.NaN),
                 new Rule("FIN-REJ-TOLERANCE", Rule.Category.NUMERIC_LIMIT,
                         "Rejected transaction tolerance limit: Maximum 0 rejected rows allowed per billing period batch",
                         List.of(), 0.0)
@@ -51,7 +51,7 @@ public class Demo {
         System.out.printf("  %sLoaded %d active SOX/ITGC compliance controls into verification pipeline.%s\n\n",
                 C_CYAN, rules.size(), RESET);
 
-        // 2. Locate and stream Vodafone Import CSV records
+        // 2. Locate and stream Enterprise Import CSV records
         Path csvPath = Paths.get("..", "..", "docs", "list-import-20260731084257.csv");
         if (!Files.exists(csvPath)) {
             csvPath = Paths.get("docs", "list-import-20260731084257.csv");
@@ -93,14 +93,14 @@ public class Demo {
         // Fallback synthetic documents if CSV is not reachable
         if (documents.isEmpty()) {
             documents.add(new TargetDocument("100001", "IMPORT_STAGE_PARTNER_20260701",
-                    "Vodafone Directs Batch interface.batch@vodafone.com approved by aylin.oeztuerk@vodafone.com",
-                    Map.of("budget", "0"), List.of("aylin.oeztuerk@vodafone.com")));
+                    "Enterprise Directs Batch interface.batch@example.com approved by erika.musterfrau@example.com",
+                    Map.of("budget", "0"), List.of("erika.musterfrau@example.com")));
             documents.add(new TargetDocument("100002", "IMPORT_STAGE_COMMISSION_20260702",
-                    "Vodafone Directs Batch interface.batch@vodafone.com approved by system.approval@vodafone.com",
+                    "Enterprise Directs Batch interface.batch@example.com approved by system.approval@example.com",
                     Map.of("budget", "0"), List.of()));
             documents.add(new TargetDocument("100006", "IMPORT_STAGE_TARIFF_20260706",
-                    "Vodafone Directs Batch interface.batch@vodafone.com approved by elena.zimmermann@vodafone.com",
-                    Map.of("budget", "2"), List.of("elena.zimmermann@vodafone.com")));
+                    "Enterprise Directs Batch interface.batch@example.com approved by otto.normalverbraucher@example.com",
+                    Map.of("budget", "2"), List.of("otto.normalverbraucher@example.com")));
         }
 
         // 3. Telemetry Stream Header
