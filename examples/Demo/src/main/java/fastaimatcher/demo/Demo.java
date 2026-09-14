@@ -140,20 +140,20 @@ public class Demo {
     }
 
     private static void printHeroHeader() {
-        System.out.println(C_CYAN + "╔════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" + RESET);
-        System.out.println(C_CYAN + "║" + C_WHITE + "  ⚡ FastAIMatcher — High-Throughput SOX & Enterprise Audit Telemetry Engine                            " + C_CYAN + "║" + RESET);
-        System.out.println(C_CYAN + "╚════════════════════════════════════════════════════════════════════════════════════════════════════════════╝" + RESET);
+        System.out.println(C_CYAN + "╔══════════════════════════════════════════════════════════════════════════════════════════════════╗" + RESET);
+        System.out.println(C_CYAN + "║" + C_WHITE + "  ⚡ FastAIMatcher — High-Throughput SOX & Enterprise Audit Telemetry Engine                      " + C_CYAN + "║" + RESET);
+        System.out.println(C_CYAN + "╚══════════════════════════════════════════════════════════════════════════════════════════════════╝" + RESET);
     }
 
     private static void printTableHead() {
-        System.out.println(C_DIM + "┌──────────┬──────────────────────────────────────┬────────────────────┬──────────┬───────┬────────────────────────────────────────┐" + RESET);
-        System.out.printf(C_DIM + "│ " + C_WHITE + "%-8s" + C_DIM + " │ " + C_WHITE + "%-36s" + C_DIM + " │ " + C_WHITE + "%-18s" + C_DIM + " │ " + C_WHITE + "%-8s" + C_DIM + " │ " + C_WHITE + "%-5s" + C_DIM + " │ " + C_WHITE + "%-38s" + C_DIM + " │\n" + RESET,
+        System.out.println(C_DIM + "┌────────┬────────────────────────────────┬───────────────────┬───────────┬───────┬──────────────────────┐" + RESET);
+        System.out.printf(C_DIM + "│ " + C_WHITE + "%-6s" + C_DIM + " │ " + C_WHITE + "%-30s" + C_DIM + " │ " + C_WHITE + "%-17s" + C_DIM + " │ " + C_WHITE + "%-9s" + C_DIM + " │ " + C_WHITE + "%-5s" + C_DIM + " │ " + C_WHITE + "%-20s" + C_DIM + " │\n" + RESET,
                 "BATCH", "STREAM / CONTEXT", "CONTROL RULE", "STATUS", "SCORE", "AUDIT EXPLANATION");
-        System.out.println(C_DIM + "├──────────┼──────────────────────────────────────┼────────────────────┼──────────┼───────┼────────────────────────────────────────┤" + RESET);
+        System.out.println(C_DIM + "├────────┼────────────────────────────────┼───────────────────┼───────────┼───────┼──────────────────────┤" + RESET);
     }
 
     private static void printFindingRow(String batchId, String name, MatchFinding f) {
-        String shortName = name.length() > 36 ? name.substring(0, 33) + "..." : name;
+        String shortName = name.length() > 30 ? name.substring(0, 27) + "..." : name;
         String statusBadge;
         switch (f.status()) {
             case COMPLIANT:
@@ -170,12 +170,21 @@ public class Demo {
                 break;
         }
 
-        String shortExpl = f.explanation().length() > 38 ? f.explanation().substring(0, 35) + "..." : f.explanation();
-        System.out.printf(C_DIM + "│" + RESET + " %-8s " + C_DIM + "│" + RESET + " %-36s " + C_DIM + "│" + RESET + " %-18s " + C_DIM + "│" + RESET + " %s " + C_DIM + "│" + RESET + " %1.2f  " + C_DIM + "│" + RESET + " %-38s " + C_DIM + "│\n" + RESET,
+        String rawExpl = f.explanation();
+        if (rawExpl.startsWith("Rule conditions verified")) {
+            rawExpl = "Conditions verified";
+        } else if (rawExpl.startsWith("Mandatory approval signature")) {
+            rawExpl = "Missing approval sign";
+        } else if (rawExpl.startsWith("Exceeded numeric threshold")) {
+            rawExpl = "Exceeded threshold";
+        }
+        String shortExpl = rawExpl.length() > 20 ? rawExpl.substring(0, 17) + "..." : rawExpl;
+
+        System.out.printf(C_DIM + "│" + RESET + " %-6s " + C_DIM + "│" + RESET + " %-30s " + C_DIM + "│" + RESET + " %-17s " + C_DIM + "│" + RESET + " %s " + C_DIM + "│" + RESET + " %1.2f  " + C_DIM + "│" + RESET + " %-20s " + C_DIM + "│\n" + RESET,
                 batchId, shortName, f.ruleId(), statusBadge, f.confidenceScore(), shortExpl);
     }
 
     private static void printTableFoot() {
-        System.out.println(C_DIM + "└──────────┴──────────────────────────────────────┴────────────────────┴──────────┴───────┴────────────────────────────────────────┘" + RESET);
+        System.out.println(C_DIM + "└────────┴────────────────────────────────┴───────────────────┴───────────┴───────┴──────────────────────┘" + RESET);
     }
 }
