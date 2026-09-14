@@ -141,9 +141,9 @@ public class Demo {
     }
 
     private static void printHeroHeader() {
-        System.out.println(C_BORDER + "╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝" + RESET);
-        System.out.println(C_BORDER + "║" + C_BOLD_WHITE + "  ⚡ FastAIMatcher" + C_GRAY + " — High-Throughput SOX & Enterprise Audit Telemetry Engine                                        " + C_BORDER + "║" + RESET);
-        System.out.println(C_BORDER + "╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝" + RESET);
+        System.out.println();
+        System.out.println("  " + C_BOLD_WHITE + "⚡ FastAIMatcher" + C_GRAY + " — High-Throughput SOX & Enterprise Audit Telemetry Engine" + RESET);
+        System.out.println();
     }
 
     private static void printTableHead() {
