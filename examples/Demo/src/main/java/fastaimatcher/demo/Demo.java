@@ -20,9 +20,9 @@ public class Demo {
 
     private static final String C_GREEN  = FastANSI.fg(74, 222, 128);
     private static final String C_RED    = FastANSI.fg(248, 113, 113);
-    private static final String C_BORDER = FastANSI.fg(237);
-    private static final String C_GRAY   = FastANSI.fg(240);
-    private static final String C_DIM    = FastANSI.fg(244);
+    private static final String C_BORDER = FastANSI.fg(90, 100, 115);
+    private static final String C_GRAY   = FastANSI.fg(140, 150, 165);
+    private static final String C_DIM    = FastANSI.fg(160, 170, 185);
     private static final String C_WHITE  = FastANSI.FG_BRIGHT_WHITE;
     private static final String C_BOLD_WHITE = FastANSI.BOLD + FastANSI.FG_BRIGHT_WHITE;
     private static final String RESET    = FastANSI.RESET;
