@@ -17,6 +17,8 @@
 
 [Watch Demo (YouTube)] | [Watch JMH Benchmark (Youtube)]
 
+[![FastAIMatcher Showcase](docs/screenshot.png)](docs/screenshot.png)
+
 ---
 
 ## Quick Start
