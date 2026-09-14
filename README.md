@@ -15,7 +15,7 @@
 
 **FastAIMatcher** automates enterprise regulatory compliance audits by cross-verifying reference rulebooks (e.g. ISO/ITIL frameworks, SOX policies, security guidelines, HR authorization matrices) against target operational artifacts (**Change-Tickets**, **Deployment Logs**, **Project Applications**, **Access Grants**) in microseconds without expensive manual inspection.
 
-[Watch Demo (YouTube)] | [Watch JMH Benchmark (Youtube)]
+Watch Demo (YouTube) | Watch JMH Benchmark (Youtube)
 
 [![FastAIMatcher Showcase](docs/screenshot.png)](docs/screenshot.png)
 
