@@ -20,6 +20,7 @@ public class Demo {
 
     private static final String C_GREEN  = FastANSI.fg(74, 222, 128);
     private static final String C_RED    = FastANSI.fg(248, 113, 113);
+    private static final String C_BORDER = FastANSI.fg(237);
     private static final String C_GRAY   = FastANSI.fg(240);
     private static final String C_DIM    = FastANSI.fg(244);
     private static final String C_WHITE  = FastANSI.FG_BRIGHT_WHITE;
@@ -140,16 +141,16 @@ public class Demo {
     }
 
     private static void printHeroHeader() {
-        System.out.println(C_GRAY + "╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" + RESET);
-        System.out.println(C_GRAY + "║" + C_BOLD_WHITE + "  ⚡ FastAIMatcher" + C_GRAY + " — High-Throughput SOX & Enterprise Audit Telemetry Engine                                          " + C_GRAY + "║" + RESET);
-        System.out.println(C_GRAY + "╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝" + RESET);
+        System.out.println(C_BORDER + "╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝" + RESET);
+        System.out.println(C_BORDER + "║" + C_BOLD_WHITE + "  ⚡ FastAIMatcher" + C_GRAY + " — High-Throughput SOX & Enterprise Audit Telemetry Engine                                        " + C_BORDER + "║" + RESET);
+        System.out.println(C_BORDER + "╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝" + RESET);
     }
 
     private static void printTableHead() {
-        System.out.println(C_GRAY + "┌────────┬──────────────────────────────────────┬───────────────────┬───────────┬───────┬────────────────────────────────┐" + RESET);
-        System.out.printf(C_GRAY + "│ " + C_BOLD_WHITE + "%-6s" + C_GRAY + " │ " + C_BOLD_WHITE + "%-36s" + C_GRAY + " │ " + C_BOLD_WHITE + "%-17s" + C_GRAY + " │ " + C_BOLD_WHITE + "%-9s" + C_GRAY + " │ " + C_BOLD_WHITE + "%-5s" + C_GRAY + " │ " + C_BOLD_WHITE + "%-30s" + C_GRAY + " │\n" + RESET,
+        System.out.println(C_BORDER + "┌────────┬──────────────────────────────────────┬───────────────────┬───────────┬───────┬──────────────────────────────┐" + RESET);
+        System.out.printf(C_BORDER + "│ " + C_BOLD_WHITE + "%-6s " + C_BORDER + "│ " + C_BOLD_WHITE + "%-36s " + C_BORDER + "│ " + C_BOLD_WHITE + "%-17s " + C_BORDER + "│ " + C_BOLD_WHITE + "%-9s " + C_BORDER + "│ " + C_BOLD_WHITE + "%-5s " + C_BORDER + "│ " + C_BOLD_WHITE + "%-28s " + C_BORDER + "│\n" + RESET,
                 "BATCH", "STREAM / CONTEXT", "CONTROL RULE", "STATUS", "SCORE", "AUDIT EXPLANATION");
-        System.out.println(C_GRAY + "├────────┼──────────────────────────────────────┼───────────────────┼───────────┼───────┼────────────────────────────────┤" + RESET);
+        System.out.println(C_BORDER + "├────────┼──────────────────────────────────────┼───────────────────┼───────────┼───────┼──────────────────────────────┤" + RESET);
     }
 
     private static void printFindingRow(String batchId, String name, MatchFinding f) {
@@ -171,9 +172,9 @@ public class Demo {
         }
 
         String rawExpl = f.explanation();
-        String shortExpl = rawExpl.length() > 30 ? rawExpl.substring(0, 27) + "..." : rawExpl;
+        String shortExpl = rawExpl.length() > 28 ? rawExpl.substring(0, 25) + "..." : rawExpl;
 
-        System.out.printf(C_GRAY + "│ " + C_DIM + "%-6s " + C_GRAY + "│ " + C_WHITE + "%-36s " + C_GRAY + "│ " + C_DIM + "%-17s " + C_GRAY + "│ %s " + C_GRAY + "│ " + C_WHITE + "%1.2f  " + C_GRAY + "│ " + (f.isViolated() ? C_RED : C_DIM) + "%-30s " + C_GRAY + "│\n" + RESET,
+        System.out.printf(C_BORDER + "│ " + C_DIM + "%-6s " + C_BORDER + "│ " + C_WHITE + "%-36s " + C_BORDER + "│ " + C_DIM + "%-17s " + C_BORDER + "│ %s " + C_BORDER + "│ " + C_WHITE + "%1.2f  " + C_BORDER + "│ " + (f.isViolated() ? C_RED : C_DIM) + "%-28s " + C_BORDER + "│\n" + RESET,
                 batchId,
                 shortName,
                 f.ruleId(),
@@ -183,6 +184,6 @@ public class Demo {
     }
 
     private static void printTableFoot() {
-        System.out.println(C_GRAY + "└────────┴──────────────────────────────────────┴───────────────────┴───────────┴───────┴────────────────────────────────┘" + RESET);
+        System.out.println(C_BORDER + "└────────┴──────────────────────────────────────┴───────────────────┴───────────┴───────┴──────────────────────────────┘" + RESET);
     }
 }
