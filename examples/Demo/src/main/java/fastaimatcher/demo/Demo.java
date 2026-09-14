@@ -111,7 +111,8 @@ public class Demo {
         int violationsFound = 0;
         List<MatchFinding> allFindings = new ArrayList<>();
 
-        for (TargetDocument doc : documents) {
+        for (int i = 0; i < documents.size(); i++) {
+            TargetDocument doc = documents.get(i);
             List<MatchFinding> findings = matcher.match(doc);
             allFindings.addAll(findings);
             totalEvaluated++;
@@ -121,6 +122,10 @@ public class Demo {
                     violationsFound++;
                 }
                 printFindingRow(doc.docId(), doc.title(), f);
+            }
+
+            if (i < documents.size() - 1) {
+                printTableDivider();
             }
         }
 
@@ -181,6 +186,10 @@ public class Demo {
                 statusBadge,
                 f.confidenceScore(),
                 shortExpl);
+    }
+
+    private static void printTableDivider() {
+        System.out.println(C_BORDER + "│        │                                      │                   │           │       │                              │" + RESET);
     }
 
     private static void printTableFoot() {
