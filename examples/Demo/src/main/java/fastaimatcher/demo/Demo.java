@@ -18,12 +18,12 @@ import java.util.*;
  */
 public class Demo {
 
-    private static final String C_CYAN   = FastANSI.fg(56, 189, 248);
     private static final String C_GREEN  = FastANSI.fg(74, 222, 128);
-    private static final String C_YELLOW = FastANSI.fg(250, 204, 21);
     private static final String C_RED    = FastANSI.fg(248, 113, 113);
-    private static final String C_DIM    = FastANSI.fg(148, 163, 184);
+    private static final String C_GRAY   = FastANSI.fg(240);
+    private static final String C_DIM    = FastANSI.fg(244);
     private static final String C_WHITE  = FastANSI.FG_BRIGHT_WHITE;
+    private static final String C_BOLD_WHITE = FastANSI.BOLD + FastANSI.FG_BRIGHT_WHITE;
     private static final String RESET    = FastANSI.RESET;
 
     public static void main(String[] args) throws Exception {
@@ -48,8 +48,8 @@ public class Demo {
         );
 
         FastAIMatcher matcher = new FastAIMatcher(rules);
-        System.out.printf("  %sLoaded %d active SOX/ITGC compliance controls into verification pipeline.%s\n\n",
-                C_CYAN, rules.size(), RESET);
+        System.out.printf("  %sLoaded %s%d%s active SOX/ITGC compliance controls into verification pipeline.%s\n\n",
+                C_DIM, C_BOLD_WHITE, rules.size(), C_DIM, RESET);
 
         // 2. Locate and stream Enterprise Import CSV records
         Path csvPath = Paths.get("..", "..", "docs", "list-import-20260731084257.csv");
@@ -129,31 +129,31 @@ public class Demo {
         byte[] encoded = MatcherCodec.encode(allFindings);
         List<MatchFinding> decoded = MatcherCodec.decode(encoded);
 
-        System.out.printf("\n  %s📊 AUDIT SUMMARY%s\n", C_WHITE, RESET);
-        System.out.printf("  %sBatches Scanned :%s %s%d%s\n", C_DIM, RESET, C_WHITE, totalEvaluated, RESET);
-        System.out.printf("  %sTotal Controls  :%s %s%d%s\n", C_DIM, RESET, C_WHITE, allFindings.size(), RESET);
-        System.out.printf("  %sNon-Compliant   :%s %s%d%s\n", C_DIM, RESET, violationsFound > 0 ? C_RED : C_GREEN, violationsFound, RESET);
+        System.out.printf("\n  %s📊 AUDIT SUMMARY%s\n", C_BOLD_WHITE, RESET);
+        System.out.printf("  %sBatches Scanned :%s %s%d%s\n", C_GRAY, RESET, C_WHITE, totalEvaluated, RESET);
+        System.out.printf("  %sTotal Controls  :%s %s%d%s\n", C_GRAY, RESET, C_WHITE, allFindings.size(), RESET);
+        System.out.printf("  %sNon-Compliant   :%s %s%d%s\n", C_GRAY, RESET, violationsFound > 0 ? C_RED : C_GREEN, violationsFound, RESET);
         System.out.printf("  %sAudit Bin Size  :%s %s%d bytes%s (round-trip verified: %s%d findings%s)\n\n",
-                C_DIM, RESET, C_CYAN, encoded.length, RESET, C_GREEN, decoded.size(), RESET);
+                C_GRAY, RESET, C_WHITE, encoded.length, RESET, C_GREEN, decoded.size(), RESET);
 
         System.out.printf("  %s✔ FastAIMatcher Telemetry Audit Pipeline Finished Successfully.%s\n", C_GREEN, RESET);
     }
 
     private static void printHeroHeader() {
-        System.out.println(C_CYAN + "╔══════════════════════════════════════════════════════════════════════════════════════════════════╗" + RESET);
-        System.out.println(C_CYAN + "║" + C_WHITE + "  ⚡ FastAIMatcher — High-Throughput SOX & Enterprise Audit Telemetry Engine                      " + C_CYAN + "║" + RESET);
-        System.out.println(C_CYAN + "╚══════════════════════════════════════════════════════════════════════════════════════════════════╝" + RESET);
+        System.out.println(C_GRAY + "╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" + RESET);
+        System.out.println(C_GRAY + "║" + C_BOLD_WHITE + "  ⚡ FastAIMatcher" + C_GRAY + " — High-Throughput SOX & Enterprise Audit Telemetry Engine                                          " + C_GRAY + "║" + RESET);
+        System.out.println(C_GRAY + "╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝" + RESET);
     }
 
     private static void printTableHead() {
-        System.out.println(C_DIM + "┌────────┬────────────────────────────────┬───────────────────┬───────────┬───────┬──────────────────────┐" + RESET);
-        System.out.printf(C_DIM + "│ " + C_WHITE + "%-6s" + C_DIM + " │ " + C_WHITE + "%-30s" + C_DIM + " │ " + C_WHITE + "%-17s" + C_DIM + " │ " + C_WHITE + "%-9s" + C_DIM + " │ " + C_WHITE + "%-5s" + C_DIM + " │ " + C_WHITE + "%-20s" + C_DIM + " │\n" + RESET,
+        System.out.println(C_GRAY + "┌────────┬──────────────────────────────────────┬───────────────────┬───────────┬───────┬────────────────────────────────┐" + RESET);
+        System.out.printf(C_GRAY + "│ " + C_BOLD_WHITE + "%-6s" + C_GRAY + " │ " + C_BOLD_WHITE + "%-36s" + C_GRAY + " │ " + C_BOLD_WHITE + "%-17s" + C_GRAY + " │ " + C_BOLD_WHITE + "%-9s" + C_GRAY + " │ " + C_BOLD_WHITE + "%-5s" + C_GRAY + " │ " + C_BOLD_WHITE + "%-30s" + C_GRAY + " │\n" + RESET,
                 "BATCH", "STREAM / CONTEXT", "CONTROL RULE", "STATUS", "SCORE", "AUDIT EXPLANATION");
-        System.out.println(C_DIM + "├────────┼────────────────────────────────┼───────────────────┼───────────┼───────┼──────────────────────┤" + RESET);
+        System.out.println(C_GRAY + "├────────┼──────────────────────────────────────┼───────────────────┼───────────┼───────┼────────────────────────────────┤" + RESET);
     }
 
     private static void printFindingRow(String batchId, String name, MatchFinding f) {
-        String shortName = name.length() > 30 ? name.substring(0, 27) + "..." : name;
+        String shortName = name.length() > 36 ? name.substring(0, 33) + "..." : name;
         String statusBadge;
         switch (f.status()) {
             case COMPLIANT:
@@ -163,28 +163,26 @@ public class Demo {
                 statusBadge = C_RED + "VIOLATION" + RESET;
                 break;
             case MISSING_EVIDENCE:
-                statusBadge = C_YELLOW + "MISS_EVID" + RESET;
+                statusBadge = C_DIM + "MISS_EVID" + RESET;
                 break;
             default:
-                statusBadge = C_YELLOW + "WARNING  " + RESET;
+                statusBadge = C_DIM + "WARNING  " + RESET;
                 break;
         }
 
         String rawExpl = f.explanation();
-        if (rawExpl.startsWith("Rule conditions verified")) {
-            rawExpl = "Conditions verified";
-        } else if (rawExpl.startsWith("Mandatory approval signature")) {
-            rawExpl = "Missing approval sign";
-        } else if (rawExpl.startsWith("Exceeded numeric threshold")) {
-            rawExpl = "Exceeded threshold";
-        }
-        String shortExpl = rawExpl.length() > 20 ? rawExpl.substring(0, 17) + "..." : rawExpl;
+        String shortExpl = rawExpl.length() > 30 ? rawExpl.substring(0, 27) + "..." : rawExpl;
 
-        System.out.printf(C_DIM + "│" + RESET + " %-6s " + C_DIM + "│" + RESET + " %-30s " + C_DIM + "│" + RESET + " %-17s " + C_DIM + "│" + RESET + " %s " + C_DIM + "│" + RESET + " %1.2f  " + C_DIM + "│" + RESET + " %-20s " + C_DIM + "│\n" + RESET,
-                batchId, shortName, f.ruleId(), statusBadge, f.confidenceScore(), shortExpl);
+        System.out.printf(C_GRAY + "│ " + C_DIM + "%-6s " + C_GRAY + "│ " + C_WHITE + "%-36s " + C_GRAY + "│ " + C_DIM + "%-17s " + C_GRAY + "│ %s " + C_GRAY + "│ " + C_WHITE + "%1.2f  " + C_GRAY + "│ " + (f.isViolated() ? C_RED : C_DIM) + "%-30s " + C_GRAY + "│\n" + RESET,
+                batchId,
+                shortName,
+                f.ruleId(),
+                statusBadge,
+                f.confidenceScore(),
+                shortExpl);
     }
 
     private static void printTableFoot() {
-        System.out.println(C_DIM + "└────────┴────────────────────────────────┴───────────────────┴───────────┴───────┴──────────────────────┘" + RESET);
+        System.out.println(C_GRAY + "└────────┴──────────────────────────────────────┴───────────────────┴───────────┴───────┴────────────────────────────────┘" + RESET);
     }
 }
