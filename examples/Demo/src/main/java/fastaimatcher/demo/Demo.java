@@ -56,12 +56,25 @@ public class Demo {
             Rule r = rules.get(i);
             boolean isLast = (i == rules.size() - 1);
             String branch = isLast ? "└──" : "├──";
+            String subBranch = isLast ? "   " : "│  ";
             String idTag = "[" + r.id() + "]";
-            System.out.printf("  %s " + C_WHITE + "%-20s " + C_GRAY + "%-14s " + C_DIM + "%s" + RESET + "\n",
-                    C_BORDER + branch + RESET,
-                    idTag,
-                    r.category().name(),
-                    r.ruleText());
+
+            String text = r.ruleText();
+            int maxLineLen = 70;
+            if (text.length() <= maxLineLen) {
+                System.out.printf("  %s " + C_WHITE + "%-20s " + C_GRAY + "%-14s " + C_DIM + "%s" + RESET + "\n",
+                        C_BORDER + branch + RESET, idTag, r.category().name(), text);
+            } else {
+                int splitIdx = text.lastIndexOf(' ', maxLineLen);
+                if (splitIdx == -1) splitIdx = maxLineLen;
+                String line1 = text.substring(0, splitIdx);
+                String line2 = text.substring(splitIdx).trim();
+
+                System.out.printf("  %s " + C_WHITE + "%-20s " + C_GRAY + "%-14s " + C_DIM + "%s" + RESET + "\n",
+                        C_BORDER + branch + RESET, idTag, r.category().name(), line1);
+                System.out.printf("  %s %-20s %-14s " + C_DIM + "%s" + RESET + "\n",
+                        C_BORDER + subBranch + RESET, "", "", line2);
+            }
         }
         System.out.println();
 
